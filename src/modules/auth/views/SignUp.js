@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   errorsContainer: {
-    height: 100,
+    height: 60,
     justifyContent: 'center',
     alignItems: 'center'
   },
