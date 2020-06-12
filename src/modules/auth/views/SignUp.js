@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Item, Input } from 'native-base';
 import { Button } from '../../../common/components/Button';
 import { CONSTANTS } from '../../../common/utils/constants';

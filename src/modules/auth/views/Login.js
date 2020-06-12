@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { View, StyleSheet, Text } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux';
+import { View, StyleSheet } from 'react-native';
 import { Item, Input } from 'native-base';
 import { CONSTANTS } from '../../../common/utils/constants';
 import { Button } from '../../../common/components/Button';
@@ -8,14 +8,14 @@ import { AuthActionsAsync } from '../redux/AuthActionsAsync';
 import { TextModal } from '../../../common/components/TextModal';
 
 
-export const Login = (props) => {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const dispatch = useDispatch()
-  const authStore = useSelector(state => state.auth)
+export const Login = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const dispatch = useDispatch();
+  const authStore = useSelector(state => state.auth);
 
-  function onLogin() {
-    dispatch(AuthActionsAsync.login({ email, password }))
+  async function onLogin() {
+    await dispatch(AuthActionsAsync.login({ email, password }));
   }
 
   return (

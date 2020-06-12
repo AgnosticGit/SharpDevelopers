@@ -1,5 +1,6 @@
 import { BaseRequest } from '../../../core/api/BaseRequest';
 import { AuthActions } from './AuthActions';
+import { MainActions } from '../../main/redux/MainActions';
 
 export class AuthActionsAsync {
   static login = (credentials) => {
@@ -44,6 +45,31 @@ export class AuthActionsAsync {
         }))
       } catch (errors) {
         dispatch(AuthActions.signUp.failed({ isLoading: false, errors }))
+      }
+    }
+  }
+
+  static getUserInfo = () => {
+    return async (dispatch) => {
+      try {
+        dispatch(AuthActions.getUserInfo.started({ isLoading: true, errors: null }))
+
+        const response = await BaseRequest(
+          'api/protected/user-info',
+          {
+            method: 'GET',
+          }
+        )
+
+        dispatch(AuthActions.getUserInfo.done({
+          isLoading: false,
+          userInfo: response.user_info_token
+        }))
+        dispatch(MainActions.setBalance({
+          balance: response.user_info_token.balance
+        }))
+      } catch (errors) {
+        dispatch(AuthActions.getUserInfo.failed({ isLoading: false, errors }))
       }
     }
   }
